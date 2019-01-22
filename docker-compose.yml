@@ -1,6 +1,12 @@
 version: '3'
 
 services:
+  api-db:
+    image: redis:5.0.3-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - api-db-data:/data
+
   api:
     build: api/
     image: casperpijnenburg/docker-test-api
@@ -16,4 +22,7 @@ services:
     build: proxy/
     image: casperpijnenburg/docker-test-proxy
     ports:
-      - 80:80
+      - 8080:80
+
+volumes:
+  api-db-data:
