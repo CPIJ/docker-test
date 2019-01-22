@@ -3,7 +3,7 @@ version: '3'
 services:
   api:
     build: api/
-    image: casperpijnenburg/docker-test/api
+    image: casperpijnenburg/docker-test-api
     volumes:
       - ./api/src:/api
 
@@ -14,6 +14,6 @@ services:
 
   proxy:
     build: proxy/
-    image: casperpijnenburg/docker-test/proxy
+    image: casperpijnenburg/docker-test-proxy
     ports:
-      - 8080:80
+      - 80:80
