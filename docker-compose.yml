@@ -3,6 +3,7 @@ version: '3'
 services:
   api:
     build: api/
+    image: casperpijnenburg/docker-test/api
     volumes:
       - ./api/src:/api
 
@@ -10,8 +11,9 @@ services:
     image: nginx:1.15.8-alpine
     volumes:
       - ./website/src:/usr/share/nginx/html
-      
+
   proxy:
     build: proxy/
+    image: casperpijnenburg/docker-test/proxy
     ports:
       - 8080:80
