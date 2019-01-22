@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  api:
+    build: api/
+    volumes:
+      - ./api/src:/api
+
+  website:
+    image: nginx:1.15.8-alpine
+    volumes:
+      - ./website/src:/usr/share/nginx/html
+      
+  proxy:
+    build: proxy/
+    ports:
+      - 8080:80
