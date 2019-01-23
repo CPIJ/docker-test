@@ -14,9 +14,14 @@ services:
       - ./api/src:/api
 
   website:
-    image: nginx:1.15.8-alpine
+    build: website/
+    image: casperpijnenburg/docker-test-website
     volumes:
-      - ./website/src:/usr/share/nginx/html
+      - ./website/:/app
+    stdin_open: true
+    tty: true
+    environment:
+      - CHOKIDAR_USEPOLLING=true
 
   proxy:
     build: proxy/
